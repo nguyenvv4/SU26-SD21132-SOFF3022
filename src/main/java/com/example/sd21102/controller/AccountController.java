@@ -16,15 +16,15 @@ public class AccountController {
         return "login.html";
     }
 
-//    String uri = request.get...("username");
+    //    String uri = request.get...("username");
     @PostMapping("/login")
     public String login(
             @RequestParam("username") String username,
-            @RequestParam("password") String password
+            @RequestParam("password") String password,
+            Model model
     ) {
-        System.out.println(username);
-        System.out.println(password);
-        return null;
+        model.addAttribute("u", username);
+        return "login.html";
     }
 
 }
