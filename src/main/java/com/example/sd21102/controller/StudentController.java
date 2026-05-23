@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -33,6 +34,14 @@ public class StudentController {
         model.addAttribute("s", student);
         System.out.println(student.toString());
         return "student.html";
+    }
+
+    @PostMapping("/student/add")
+    public String addStudent(Student student) {
+        System.out.println(student.toString());
+        studentRepo.save(student);
+        // quay lai trang chu
+        return "redirect:/student";
     }
 
 }

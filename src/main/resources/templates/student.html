@@ -5,8 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-<!--id : <label th:text="${s.id}"></label>-->
-<!--class name : <label th:text="${s.className}"></label>-->
+<form action="/student/add" method="post">
+    <!--    Do id tu tang nen khi them khong truyen id len-->
+    class name : <input type="text" name="className"> <br>
+    email: <input type="text" name="email"> <br>
+    major : <input type="text" name="major"> <br>
+    full name: <input type="text" name="fullName"> <br>
+    phone : <input type="text" name="phone"> <br>
+    student code : <input type="text" name="studentCode"> <br>
+    <button type="submit">Them</button>
+</form>
 
 <table>
     <thead>
