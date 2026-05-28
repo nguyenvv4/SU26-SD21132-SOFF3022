@@ -5,15 +5,29 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/student/add" method="post">
-    <!--    Do id tu tang nen khi them khong truyen id len-->
-    class name : <input type="text" name="className"> <br>
-    email: <input type="text" name="email"> <br>
-    major : <input type="text" name="major"> <br>
-    full name: <input type="text" name="fullName"> <br>
-    phone : <input type="text" name="phone"> <br>
-    student code : <input type="text" name="studentCode"> <br>
+<!--form thuong-->
+<!--<form action="/student/add" method="post">-->
+<!--    &lt;!&ndash;    Do id tu tang nen khi them khong truyen id len&ndash;&gt;-->
+<!--    class name : <input type="text" name="className"> <br>-->
+<!--    email: <input type="text" name="email"> <br>-->
+<!--    major : <input type="text" name="major"> <br>-->
+<!--    full name: <input type="text" name="fullName"> <br>-->
+<!--    phone : <input type="text" name="phone"> <br>-->
+<!--    student code : <input type="text" name="studentCode"> <br>-->
+<!--    <button type="submit">Them</button>-->
+<!--</form>-->
+
+
+<!--spring form-->
+<form action="/spring-form/student/add" method="post" th:object="${student}">
+    class name : <input th:field="*{className}"><br>
+    email: <input  th:field="*{email}"> <br>
+    major : <input  th:field="*{major}"> <br>
+    full name: <input  th:field="*{fullName}"> <br>
+    phone : <input  th:field="*{phone}"> <br>
+    student code : <input  th:field="*{studentCode}"> <br>
     <button type="submit">Them</button>
+
 </form>
 
 <table>
