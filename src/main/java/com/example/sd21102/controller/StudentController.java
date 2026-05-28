@@ -2,9 +2,11 @@ package com.example.sd21102.controller;
 
 import com.example.sd21102.model.Student;
 import com.example.sd21102.repo.StudentRepo;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,11 +58,20 @@ public class StudentController {
     }
 
     @PostMapping("/spring-form/student/add")
-    public String springFormAddStudent(@ModelAttribute("student") Student student) {
-        System.out.println(student.toString());
-        studentRepo.save(student);
-        // quay lai trang chu
-        return "redirect:/spring-form/student";
+    public String springFormAddStudent(@ModelAttribute("student") @Valid Student student,
+                                       Errors errors,
+                                       Model model
+                                       ) {
+        if (errors.hasErrors()) {
+            List<Student> students = studentRepo.findAll();
+            model.addAttribute("students", students);
+            model.addAttribute("message", "vui long sua cac loi sau");
+            return "student.html";
+        } else {
+            studentRepo.save(student);
+            // quay lai trang chu
+            return "redirect:/spring-form/student";
+        }
     }
 
 

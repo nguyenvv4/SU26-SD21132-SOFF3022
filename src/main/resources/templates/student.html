@@ -24,7 +24,7 @@
     email: <input  th:field="*{email}"> <br>
     major : <input  th:field="*{major}"> <br>
     full name: <input  th:field="*{fullName}"> <br>
-    phone : <input  th:field="*{phone}"> <br>
+    phone : <input  th:field="*{phone}"> <i th:errors="*{phone}"></i> <br>
     student code : <input  th:field="*{studentCode}"> <br>
     <button type="submit">Them</button>
 
