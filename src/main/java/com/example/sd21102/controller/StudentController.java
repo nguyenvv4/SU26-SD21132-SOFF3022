@@ -81,5 +81,11 @@ public class StudentController {
         return "redirect:/spring-form/student";
     }
 
+    @GetMapping("/detail")
+    public String detailStudent(@RequestParam Integer id) {
+        Student student = studentRepo.findById(id).get(); // convert optional sang student
+        return "redirect:/spring-form/student";
+    }
+
 
 }
