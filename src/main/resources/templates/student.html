@@ -39,6 +39,7 @@
         <td>email</td>
         <td>major</td>
         <td>student code</td>
+        <td>Action</td>
     </tr>
     </thead>
     <tbody>
@@ -49,6 +50,9 @@
         <td th:text="${sv.email}"></td>
         <td th:text="${sv.major}"></td>
         <td th:text="${sv.studentCode}"></td>
+        <td><a th:href="@{|/delete?id=${sv.id}|}">Xoa</a></td>
+<!--        /delete?id=1-->
+        <td><a href="">Chi tiet</a></td>
     </tr>
     </tbody>
 </table>

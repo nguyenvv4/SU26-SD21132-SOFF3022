@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -61,7 +62,7 @@ public class StudentController {
     public String springFormAddStudent(@ModelAttribute("student") @Valid Student student,
                                        Errors errors,
                                        Model model
-                                       ) {
+    ) {
         if (errors.hasErrors()) {
             List<Student> students = studentRepo.findAll();
             model.addAttribute("students", students);
@@ -72,6 +73,12 @@ public class StudentController {
             // quay lai trang chu
             return "redirect:/spring-form/student";
         }
+    }
+
+    @GetMapping("/delete")
+    public String deleteStudent(@RequestParam Integer id) {
+        studentRepo.deleteById(id);
+        return "redirect:/spring-form/student";
     }
 
 
