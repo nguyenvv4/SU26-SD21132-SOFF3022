@@ -81,11 +81,25 @@ public class StudentController {
         return "redirect:/spring-form/student";
     }
 
-    @GetMapping("/detail")
-    public String detailStudent(@RequestParam Integer id) {
+    @GetMapping("/spring-form/student/detail")
+    public String detailStudent(@RequestParam Integer id,
+                                Model model) {
         Student student = studentRepo.findById(id).get(); // convert optional sang student
-        return "redirect:/spring-form/student";
+        model.addAttribute("st", student);
+        return "student-detail.html";
     }
 
+    @PostMapping("/spring-form/student/update")
+    public String springFormUpdateStudent(@ModelAttribute("student") @Valid Student student,
+                                          Errors errors,
+                                          Model model
+    ) {
+
+        System.out.println(student.toString());
+        studentRepo.save(student);
+        // quay lai trang chu
+        return "redirect:/spring-form/student";
+
+    }
 
 }

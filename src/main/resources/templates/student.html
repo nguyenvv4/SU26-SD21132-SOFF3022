@@ -52,7 +52,7 @@
         <td th:text="${sv.studentCode}"></td>
         <td><a th:href="@{|/delete?id=${sv.id}|}">Xoa</a></td>
 <!--        /delete?id=1-->
-        <td><a href="">Chi tiet</a></td>
+        <td><a th:href="@{|/spring-form/student/detail?id=${sv.id}|}">Chi tiet</a></td>
     </tr>
     </tbody>
 </table>

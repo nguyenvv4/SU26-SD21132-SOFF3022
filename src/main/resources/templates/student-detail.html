@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{|/spring-form/student/update?id=${st.id}|}" method="post" th:object="${st}">
+    class name : <input th:field="*{className}" th:value="${className}"><br>
+    email: <input  th:field="*{email}"  th:value="${email}"> <br>
+    major : <input  th:field="*{major}"  th:value="${major}"> <br>
+    full name: <input  th:field="*{fullName}"  th:value="${fullName}"> <br>
+    phone : <input  th:field="*{phone}"> <i th:errors="*{phone}"  th:value="${phone}"></i> <br>
+    student code : <input  th:field="*{studentCode}"  th:value="${studentCode}"> <br>
+    <button type="submit">Cap nhat</button>
+</form>
+</body>
+</html>
