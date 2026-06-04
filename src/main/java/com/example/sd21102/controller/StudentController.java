@@ -1,7 +1,9 @@
 package com.example.sd21102.controller;
 
 import com.example.sd21102.model.Student;
+import com.example.sd21102.model.Temp;
 import com.example.sd21102.repo.StudentRepo;
+import com.example.sd21102.repo.TempRepo;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class StudentController {
 
     @Autowired
     StudentRepo studentRepo;
+
+    @Autowired
+    TempRepo tempRepo;
 
     @GetMapping("/student")
     public String findAll(Model model) {
@@ -55,6 +60,12 @@ public class StudentController {
     public String springFormStudent(Model model, @ModelAttribute("student") Student student) {
         List<Student> students = studentRepo.findAll();
         model.addAttribute("students", students);
+
+        // test custom query
+        List<Temp> list = tempRepo.getAllTemp();
+        for (Temp temp : list) {
+            System.out.println(temp.toString());
+        }
         return "student.html";
     }
 
@@ -101,5 +112,7 @@ public class StudentController {
         return "redirect:/spring-form/student";
 
     }
+
+
 
 }
