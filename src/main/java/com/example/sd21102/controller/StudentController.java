@@ -6,6 +6,9 @@ import com.example.sd21102.repo.StudentRepo;
 import com.example.sd21102.repo.TempRepo;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -57,8 +60,13 @@ public class StudentController {
     //===== su dung spring form======
 
     @GetMapping("/spring-form/student")
-    public String springFormStudent(Model model, @ModelAttribute("student") Student student) {
-        List<Student> students = studentRepo.findAll();
+    public String springFormStudent(Model model, @ModelAttribute("student") Student student,
+                                    @RequestParam("page") int page) {
+        // danh sach student
+//        List<Student> students = studentRepo.findAll();
+        // phan trang student
+        Pageable pageable = PageRequest.of(page, 5);
+        Page<Student> students = studentRepo.findAll(pageable);
         model.addAttribute("students", students);
 
         // test custom query
