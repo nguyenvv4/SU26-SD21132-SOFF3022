@@ -1,6 +1,7 @@
 package com.example.sd21102.repo;
 
 import com.example.sd21102.model.Temp;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

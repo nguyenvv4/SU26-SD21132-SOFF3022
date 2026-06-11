@@ -121,6 +121,14 @@ public class StudentController {
 
     }
 
+    @GetMapping("/student/saerch")
+    public String search(Model model,
+                         @RequestParam("name") String name) {
+        List<Student> list = studentRepo.findByName(name);
+        model.addAttribute("student", new Student());
+        model.addAttribute("students", list);
+        return "student.html";
+    }
 
 
 }

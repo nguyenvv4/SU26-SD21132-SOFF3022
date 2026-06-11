@@ -21,13 +21,19 @@
 <!--spring form-->
 <form action="/spring-form/student/add" method="post" th:object="${student}">
     class name : <input th:field="*{className}"><br>
-    email: <input  th:field="*{email}"> <br>
-    major : <input  th:field="*{major}"> <br>
-    full name: <input  th:field="*{fullName}"> <br>
-    phone : <input  th:field="*{phone}"> <i th:errors="*{phone}"></i> <br>
-    student code : <input  th:field="*{studentCode}"> <br>
+    email: <input th:field="*{email}"> <br>
+    major : <input th:field="*{major}"> <br>
+    full name: <input th:field="*{fullName}"> <br>
+    phone : <input th:field="*{phone}"> <i th:errors="*{phone}"></i> <br>
+    student code : <input th:field="*{studentCode}"> <br>
     <button type="submit">Them</button>
 
+</form>
+
+<h2>Tim kiem</h2>
+<form action="/student/saerch" method="">
+    name : <input type="text" name="name">
+    <button type="submit">Search</button>
 </form>
 
 <table>
@@ -51,7 +57,7 @@
         <td th:text="${sv.major}"></td>
         <td th:text="${sv.studentCode}"></td>
         <td><a th:href="@{|/delete?id=${sv.id}|}">Xoa</a></td>
-<!--        /delete?id=1-->
+        <!--        /delete?id=1-->
         <td><a th:href="@{|/spring-form/student/detail?id=${sv.id}|}">Chi tiet</a></td>
     </tr>
     </tbody>
